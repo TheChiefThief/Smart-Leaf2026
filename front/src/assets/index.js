@@ -1,0 +1,11 @@
+export { default as JardinImage } from './Jardin.jpg';
+export { default as CalendarioImage } from './Calendario.jpg';
+export { default as BiblitecaImage } from './Biblioteca.jpg';
+export { default as CamaraImage } from './Analisis.jpg';
+export { default as Logo } from './Logo.jpg';
+export { default as Cilantro } from './examples/Cilantro.jpg';
+export { default as Tomate } from './examples/Tomate.jpg';
+export { default as Albahaca } from './examples/Albahaca.jpg';
+export { default as Jazmin } from './examples/Jazmin.jpg';
+export { default as Camera } from './Analisis_1.jpg';
+export { default as Avatar } from './examples/Avatar.jpg';

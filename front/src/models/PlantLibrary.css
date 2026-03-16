@@ -1,0 +1,71 @@
+.library-container {
+  max-width: 400px;
+  margin: auto;
+  font-family: 'Arial', sans-serif;
+  background-color: #f9fdf9;
+  }
+  
+  .library-title {
+    font-size: 28px;
+    margin-bottom: 12px;
+    font-weight: 700;
+    color: #1e3d2f;
+  }
+  
+  .search-bar {
+    width: 100%;
+    padding: 10px 14px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 14px;
+    background-color: #e3f3eb;
+    font-size: 16px;
+  }
+  
+  .section {
+    margin-bottom: 32px;
+  }
+  
+  .section-title {
+    font-size: 18px;
+    margin-bottom: 12px;
+    font-weight: 600;
+    color: #2a4a36;
+  }
+  
+  .plant-list-lib {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* Ajusta el número de columnas automáticamente */
+    gap: 16px; /* Espaciado uniforme entre las tarjetas */
+    justify-content: center; /* Centra las tarjetas horizontalmente */
+    margin-bottom: 20px;
+  }
+  
+  .plant-card-lib {
+    border-radius: 12px;
+    overflow: hidden;
+    width: 170px;
+    padding: 0;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .plant-card-lib:hover {
+    transform: translateY(-5px); /* Efecto de elevación al pasar el cursor */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .plant-image-lib {
+    width: 170px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin: 0;
+  }
+  
+  .plant-name-lib {
+    margin: 0 0 0 0.2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    text-align: left;
+  }

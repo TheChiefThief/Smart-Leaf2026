@@ -1,0 +1,13 @@
+export {default as Home} from './Home.jsx';
+export {default as NotFound} from './NotFound.jsx';
+export {default as Garden} from './Garden.jsx';
+export {default as Calendar} from './Calendar.jsx';
+export {default as PlantIdentifier} from './PlantIdentifier.jsx';
+export {default as PlantsLibrary} from './PlantsLibrary.jsx';
+export {default as PlantConsultantAI} from './PlantConsultantAi.jsx';
+export {default as Profile} from './Profile.jsx';
+export {default as Settings} from './Settings.jsx';
+export {default as Login} from './Login.jsx';
+export {default as Registro} from './Register.jsx';
+export {default as AddPlant} from './AddPlant.jsx';
+export {default as PlantDetails} from './PlantDetails.jsx';

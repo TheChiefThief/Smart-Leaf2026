@@ -1,0 +1,33 @@
+.plant-details {
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+  background-color: #f8fbf7;
+  min-height: 100vh;
+  text-align: center;
+}
+
+.plant-details h2 {
+  font-size: 28px;
+  color: #2e7d32;
+}
+
+.plant-details img {
+  max-width: 300px;
+  border-radius: 12px;
+  margin: 20px 0;
+}
+
+.plant-details p {
+  font-size: 18px;
+  color: #555;
+}
+
+.plant-details button {
+  padding: 10px 20px;
+  background-color: #00c853;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}

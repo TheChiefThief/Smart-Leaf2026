@@ -1,0 +1,52 @@
+.home-card {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  background-color: #edf3f0; 
+  border-radius: 13px;
+  padding: 15px;
+  margin: 10px 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); 
+}
+
+.home-card-text {
+  flex: 1; 
+  text-align: left; 
+}
+
+.home-card-title {
+  font-size: 19px;
+  font-weight: bold;
+  margin: 0; 
+  color: #1b1b1b; 
+}
+
+.home-card-description {
+  font-size: 14px;
+  color: #328d55;
+  margin: 4px 0 0 0;
+  text-align: left;
+}
+
+.home-card-button {
+  background-color: #cff0dc; 
+  border: none;
+  padding: 8px 16px; 
+  border-radius: 999px; 
+  font-size: 14px;
+  color: #131212; 
+  cursor: pointer;
+  transition: background-color 0.3s ease; 
+}
+
+.home-card-button:hover {
+  background-color: #a8ddbb; 
+}
+
+.home-card-image {
+  width: 120px; 
+  height: 130px;
+  border-radius: 8px; 
+  object-fit: cover; 
+  margin-left: 16px; 
+}

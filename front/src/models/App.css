@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+body {
+    font-family: 'Poppins', sans-serif;
+  background-color: #f9fafb;
+  color: #1a1a1a;
+  margin: 0;
+  padding: 0; 
+  
+  }
+  
+  .app {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    padding-bottom: 90px
+  }
+  .header {
+    text-align: center;
+  }
+  .main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    padding: 15px;
+    margin: 15px 0;
+    width: 100%; 
+    box-sizing: border-box;
+  }
+  .card img {
+    width: 70px;
+    height: 70px;
+    border-radius: 16px;
+    object-fit: cover;
+  }
+  .card h3 {
+    margin: 0 0 5px 0;
+    font-size: 1.1rem;
+  }
+  .card p {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0 0 10px;
+  }
+  .level {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+    color: #4caf50;
+    font-weight: 500;
+  }
+  input[type="range"] {
+    appearance: none;
+    height: 6px;
+    background: #c8e6c9;
+    border-radius: 999px;
+    outline: none;
+    width: 100%;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #4caf50;
+    cursor: pointer;
+  }
+  
+  button {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 999px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  button:hover {
+    background-color: #c8e6c9;
+  }
+
+  .home-title {
+    font-size: 22px;
+    font-weight: 600;
+    color: #1b1b1b;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.dark-theme,
+body.dark-theme {
+  background-color: #181c1f !important;
+  color: #e0e0e0 !important;
+}
+
+.dark-theme .app,
+body.dark-theme .app {
+  background-color: #181c1f !important;
+  color: #e0e0e0 !important;
+}
+
+.dark-theme .settings-card,
+.dark-theme .plant-card,
+.dark-theme .plant-card-lib,
+.dark-theme .library-container,
+.dark-theme .calendar-container,
+.dark-theme .perfil-container,
+.dark-theme .register-box,
+.dark-theme .container,
+.dark-theme .chatbot-container {
+  background-color: #23272f !important;
+  color: #e0e0e0 !important;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+
+.dark-theme input,
+.dark-theme select,
+.dark-theme textarea {
+  background-color: #23272f !important;
+  color: #e0e0e0 !important;
+  border: 1px solid #444 !important;
+}
+
+.dark-theme .add-button,
+.dark-theme .edit-button,
+.dark-theme .settings-save-button,
+.dark-theme button {
+  background-color: #388e3c !important;
+  color: #fff !important;
+}
+
+.dark-theme .add-button:hover,
+.dark-theme .edit-button:hover,
+.dark-theme .settings-save-button:hover,
+.dark-theme button:hover {
+  background-color: #2e7d32 !important;
+}
+
+.dark-theme .bottom-nav {
+  background-color: #23272f !important;
+  color: #e0e0e0 !important;
+  border-top: 1px solid #333 !important;
+}
+
+.dark-theme .nav-item,
+.dark-theme .nav-item.active {
+  color: #8fbc8f !important;
+}
+

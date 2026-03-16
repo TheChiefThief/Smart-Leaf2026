@@ -1,0 +1,97 @@
+.settings-page {
+  background-color: #f9fdf8;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 15px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.settings-card {
+  background-color: #f8fbf7;
+  border-radius: 16px;
+  padding: 30px 25px;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.settings-card h2 {
+  font-size: 24px;
+  color: #2e7d32;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.settings-option {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.settings-option label {
+  font-weight: 500;
+  color: #333;
+}
+
+.settings-option select,
+.settings-option input[type="checkbox"] {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.settings-save-button {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #66bb6a;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.settings-save-button:hover {
+  background-color: #4caf50;
+}
+
+.dark-theme {
+  background-color: #23272f;
+}
+
+.dark-theme .settings-card {
+  background-color: #2e3440;
+  color: #e0e0e0;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+
+.dark-theme .settings-card h2 {
+  color: #8fbc8f;
+}
+
+.dark-theme .settings-option label {
+  color: #e0e0e0;
+}
+
+.dark-theme .settings-option select,
+.dark-theme .settings-option input[type="checkbox"] {
+  background-color: #23272f;
+  color: #e0e0e0;
+  border: 1px solid #444;
+}
+
+.dark-theme .settings-save-button {
+  background-color: #388e3c;
+  color: #fff;
+}
+
+.dark-theme .settings-save-button:hover {
+  background-color: #2e7d32;
+}

@@ -1,0 +1,22 @@
+.app-header {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  box-shadow: none;
+  height: 50px;
+  position: relative;
+  margin-bottom: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.header-title {
+  flex: 1; 
+  text-align: center;
+  font-size: 1.125rem; 
+  font-weight: 600; 
+  line-height: 50px; 
+  padding: 20px;
+}
+

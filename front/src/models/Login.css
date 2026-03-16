@@ -1,0 +1,169 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  body {
+    background-color: #f8fbf7;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Genérico para el contenedor */
+  .container {
+    width: 100%;
+    max-width: 800px;
+    background-color: #ffffff;
+    padding: 70px 70px;
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    margin: auto;
+  }
+  
+  .login-title {
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #222;
+  }
+  
+  .login-subtitle {
+    text-align: left;
+    margin: 10px 0 20px 5px;
+    font-size: 14px;
+  }
+  
+  .login-subtitle .rec-button {
+    background: none;
+    border: none;
+    color: #2e7d32;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0;
+    font-size: 14px;
+  }
+  
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .form-group input {
+    width: 350px;
+    padding: 18px;
+    border: none;
+    border-radius: 18px;
+    background-color: #ecf6ed;
+    color: #2e7d32;
+    font-size: 16px;
+    font-weight: 400;
+  }
+  
+  .form-group input::placeholder {
+    color: #2e7d32
+  }
+  
+  .login-button {
+    padding: 18px;
+    background-color: #00e600;
+    color: #000;
+    border: none;
+    border-radius: 18px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .login-button:hover {
+    background-color: #00cc00;
+  }
+  
+  .login-error {
+    color: red;
+    font-size: 14px;
+    margin-top: -10px;
+  }
+  
+  .login-sign {
+    margin-top: 20px;
+  }
+  
+  .login-sign .rec-button {
+    background: none;
+    border: none;
+    color: #000;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .register-container {
+    background-color: #f8fbf7;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .register-box {
+    width: 100%;
+    max-width: 350px;
+    text-align: center;
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 60px;
+    color: #111;
+  }
+  
+  .title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #111;
+    margin-bottom: 10px;
+  }
+  
+  .subtitle {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+  }
+  
+  .button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+  
+  .login-button:hover {
+    background-color: #dbeedc;
+  }
+  
+  .alt-login {
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  
+  .privacy-text {
+    font-size: 13px;
+    color: #3b7b3b;
+    line-height: 1.5;
+  }
+  
+  .link {
+    text-decoration: underline;
+    color: #3b7b3b;
+  }
+  

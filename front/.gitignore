@@ -1,0 +1,71 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+<<<<<<< HEAD
+
+=======
+>>>>>>> eb48d63b2759472991cdc8b8fec0b6786d30be41
+# === BACKEND (.NET / C#) ===
+**/bin/
+**/obj/
+*.exe
+*.dll
+*.pdb
+*.apphost.exe
+*.suo
+*.user
+*.cache
+*.log
+
+# Visual Studio
+.vscode/
+*.vs/
+.vsconfig
+
+# === FRONTEND (Node.js / React) ===
+node_modules/
+build/
+dist/
+.env
+.env.local
+.env.*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# === SISTEMA OPERATIVO / GENERAL ===
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# === IMÁGENES DE EJEMPLO / TEMPORALES ===
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.svg
+*.tmp
