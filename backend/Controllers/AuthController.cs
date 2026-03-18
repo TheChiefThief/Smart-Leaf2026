@@ -1,9 +1,8 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SmartLeaf.Services;
-using SmartLeaf.Domain;
+using SmartLeaf.Application.DTOs;
+using SmartLeaf.Application.Interfaces;
 using System.Security.Claims;
-using System.Threading.Tasks;
 
 namespace SmartLeaf.Controllers
 {
@@ -11,12 +10,9 @@ namespace SmartLeaf.Controllers
     [Route("api/[controller]")]
     public class AuthController : ControllerBase
     {
-        private readonly AuthService _authService;
+        private readonly IAuthService _authService;
 
-        public AuthController(AuthService authService)
-        {
-            _authService = authService;
-        }
+        public AuthController(IAuthService authService) => _authService = authService;
 
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequest request)
@@ -24,8 +20,7 @@ namespace SmartLeaf.Controllers
             var token = await _authService.AuthenticateAsync(request.Email, request.Password);
             if (token == null)
                 return Unauthorized(new { message = "Credenciales inválidas" });
-
-            return Ok(new { token });
+            return Ok(new LoginResponse { Token = token });
         }
 
         [HttpPost("register")]
@@ -34,7 +29,6 @@ namespace SmartLeaf.Controllers
             var result = await _authService.RegisterAsync(request);
             if (!result.Success)
                 return BadRequest(new { message = result.Error });
-
             return Ok(new { message = "Usuario registrado correctamente" });
         }
 
@@ -46,11 +40,5 @@ namespace SmartLeaf.Controllers
             var role = User.FindFirstValue(ClaimTypes.Role);
             return Ok(new { email, role });
         }
-    }
-
-    public class LoginRequest
-    {
-        public string Email { get; set; }
-        public string Password { get; set; }
     }
 }

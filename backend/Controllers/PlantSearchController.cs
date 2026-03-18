@@ -1,41 +1,24 @@
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json.Linq;
-using System.Net.Http;
-using System.Threading.Tasks;
+using SmartLeaf.Application.Interfaces;
 
-[ApiController]
-[Route("api/[controller]")]
-public class PlantSearchController : ControllerBase
+namespace SmartLeaf.Controllers
 {
-    private readonly HttpClient _httpClient;
-
-    public PlantSearchController(IHttpClientFactory httpClientFactory)
+    [ApiController]
+    [Route("api/[controller]")]
+    public class PlantSearchController : ControllerBase
     {
-        _httpClient = httpClientFactory.CreateClient();
-    }
+        private readonly IPlantSearchService _plantSearchService;
 
-    [HttpGet("{name}")]
-    public async Task<IActionResult> GetPlantImage(string name)
-    {
-        var encodedName = System.Net.WebUtility.UrlEncode(name);
-        var url = $"https://api.inaturalist.org/v1/search?q={encodedName}&sources=taxa";
+        public PlantSearchController(IPlantSearchService plantSearchService) =>
+            _plantSearchService = plantSearchService;
 
-        var response = await _httpClient.GetAsync(url);
-
-        if (!response.IsSuccessStatusCode)
-            return StatusCode((int)response.StatusCode, "Error consultando la API de iNaturalist");
-
-        var content = await response.Content.ReadAsStringAsync();
-        var json = JObject.Parse(content);
-
-        var results = json["results"];
-        if (results == null || !results.HasValues)
-            return NotFound("Planta no encontrada");
-
-        var photoUrl = results[0]["record"]?["default_photo"]?["medium_url"]?.ToString();
-        if (string.IsNullOrEmpty(photoUrl))
-            return NotFound("No se encontró una imagen de la planta.");
-
-        return Ok(photoUrl);
+        [HttpGet("{name}")]
+        public async Task<IActionResult> GetPlantImage(string name)
+        {
+            var photoUrl = await _plantSearchService.GetPlantImageUrlAsync(name);
+            if (string.IsNullOrEmpty(photoUrl))
+                return NotFound("No se encontró imagen para esa planta.");
+            return Ok(photoUrl);
+        }
     }
 }

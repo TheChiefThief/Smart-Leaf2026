@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "nOy5Ps9/xjE=",
+  "dgSpecHash": "Hc3zBzVibng=",
   "success": true,
-  "projectFilePath": "C:\\Users\\lucia\\Desktop\\Smart-Leaf-main\\backend\\backend.csproj",
+  "projectFilePath": "C:\\Users\\lucia\\Desktop\\SmartLeaf2026\\backend\\backend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lucia\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\9.0.4\\microsoft.aspnetcore.authentication.jwtbearer.9.0.4.nupkg.sha512",
     "C:\\Users\\lucia\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.4\\microsoft.aspnetcore.openapi.9.0.4.nupkg.sha512",

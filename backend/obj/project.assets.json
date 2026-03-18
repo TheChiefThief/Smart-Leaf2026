@@ -1000,11 +1000,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lucia\\Desktop\\Smart-Leaf-main\\backend\\backend.csproj",
+      "projectUniqueName": "C:\\Users\\lucia\\Desktop\\SmartLeaf2026\\backend\\backend.csproj",
       "projectName": "backend",
-      "projectPath": "C:\\Users\\lucia\\Desktop\\Smart-Leaf-main\\backend\\backend.csproj",
+      "projectPath": "C:\\Users\\lucia\\Desktop\\SmartLeaf2026\\backend\\backend.csproj",
       "packagesPath": "C:\\Users\\lucia\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\lucia\\Desktop\\Smart-Leaf-main\\backend\\obj\\",
+      "outputPath": "C:\\Users\\lucia\\Desktop\\SmartLeaf2026\\backend\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

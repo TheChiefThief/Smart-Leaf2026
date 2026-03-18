@@ -3,11 +3,13 @@ namespace SmartLeaf.Domain
     public class Plant
     {
         public int Id { get; set; }
-        public string UserId { get; set; }
-        public int PlantTypeId { get; set; }
-        public string CustomName { get; set; }
-        public DateTime PlantedDate { get; set; }
-        public string Region { get; set; }
-        public int Status { get; set; }
+        public int GardenId { get; set; }
+        public int SpeciesId { get; set; }
+        public string Nickname { get; set; } = string.Empty;
+        public int InitialQuantity { get; set; }
+        public DateTime PlantingDate { get; set; }
+        public string Status { get; set; } = string.Empty;
+        public DateTime? EndDate { get; set; }
+        public string Notes { get; set; } = string.Empty;
     }
 }
