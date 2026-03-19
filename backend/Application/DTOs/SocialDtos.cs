@@ -25,9 +25,9 @@ namespace SmartLeaf.Application.DTOs
 
     public class UpdateProfileRequest
     {
-        public string? NombreCompleto { get; set; }
+        public string? FullName { get; set; }
         public string? AvatarUrl { get; set; }
-        public string? Biografia { get; set; }
-        public bool? EsPrivado { get; set; }
+        public string? Biography { get; set; }
+        public bool? IsPrivate { get; set; }
     }
 }

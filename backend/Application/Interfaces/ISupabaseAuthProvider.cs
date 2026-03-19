@@ -6,14 +6,16 @@ namespace SmartLeaf.Application.Interfaces
     /// </summary>
     public interface ISupabaseAuthProvider
     {
-        Task<SupabaseSignUpResult?> SignUpAsync(string email, string password);
+        Task<SupabaseSignUpResult?> SignUpAsync(string email, string password, string username, string fullName);
         Task<SupabaseSignInResult?> SignInAsync(string email, string password);
+        Task PatchProfileAsync(string userId, string accessToken, string username, string fullName);
     }
 
     public class SupabaseSignUpResult
     {
         public string UserId { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
+        public string? AccessToken { get; set; }
     }
 
     public class SupabaseSignInResult

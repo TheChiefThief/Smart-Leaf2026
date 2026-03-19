@@ -18,10 +18,10 @@ namespace SmartLeaf.Services
             var profile = await _repo.GetByUserIdAsync(userId);
             if (profile == null) return;
 
-            if (request.NombreCompleto != null) profile.NombreCompleto = request.NombreCompleto;
+            if (request.FullName != null) profile.FullName = request.FullName;
             if (request.AvatarUrl != null) profile.AvatarUrl = request.AvatarUrl;
-            if (request.Biografia != null) profile.Biografia = request.Biografia;
-            if (request.EsPrivado.HasValue) profile.EsPrivado = request.EsPrivado.Value;
+            if (request.Biography != null) profile.Biography = request.Biography;
+            if (request.IsPrivate.HasValue) profile.IsPrivate = request.IsPrivate.Value;
 
             await _repo.UpdateAsync(profile);
         }

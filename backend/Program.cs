@@ -5,6 +5,7 @@ using SmartLeaf.Application.Interfaces;
 using SmartLeaf.Infrastructure.Repositories;
 using SmartLeaf.Infrastructure.ExternalServices;
 using SmartLeaf.Services;
+using SmartLeaf.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 var config  = builder.Configuration;
@@ -76,6 +77,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseMiddleware<ErrorHandlerMiddleware>();
 app.UseCors("AllowFrontend");
 app.UseAuthentication();
 app.UseAuthorization();

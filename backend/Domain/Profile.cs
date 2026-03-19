@@ -5,9 +5,9 @@ namespace SmartLeaf.Domain
         public string Id { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
         public string Username { get; set; } = string.Empty;
-        public string NombreCompleto { get; set; } = string.Empty;
+        public string FullName { get; set; } = string.Empty;
         public string? AvatarUrl { get; set; }
-        public string? Biografia { get; set; }
-        public bool EsPrivado { get; set; }
+        public string? Biography { get; set; }
+        public bool IsPrivate { get; set; }
     }
 }

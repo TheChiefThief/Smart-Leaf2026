@@ -37,10 +37,10 @@ namespace SmartLeaf.Infrastructure.Repositories
             cmd.Parameters.AddWithValue("id", profile.Id);
             cmd.Parameters.AddWithValue("email", profile.Email);
             cmd.Parameters.AddWithValue("username", profile.Username);
-            cmd.Parameters.AddWithValue("nombre", profile.NombreCompleto);
+            cmd.Parameters.AddWithValue("nombre", profile.FullName);
             cmd.Parameters.AddWithValue("avatar", (object?)profile.AvatarUrl ?? DBNull.Value);
-            cmd.Parameters.AddWithValue("bio", (object?)profile.Biografia ?? DBNull.Value);
-            cmd.Parameters.AddWithValue("priv", profile.EsPrivado);
+            cmd.Parameters.AddWithValue("bio", (object?)profile.Biography ?? DBNull.Value);
+            cmd.Parameters.AddWithValue("priv", profile.IsPrivate);
             await cmd.ExecuteNonQueryAsync();
             return profile;
         }
@@ -54,10 +54,10 @@ namespace SmartLeaf.Infrastructure.Repositories
                   SET nombre_completo = @nombre, avatar_url = @avatar, biografia = @bio, es_privado = @priv
                   WHERE id = @id::uuid",
                 conn);
-            cmd.Parameters.AddWithValue("nombre", profile.NombreCompleto);
+            cmd.Parameters.AddWithValue("nombre", profile.FullName);
             cmd.Parameters.AddWithValue("avatar", (object?)profile.AvatarUrl ?? DBNull.Value);
-            cmd.Parameters.AddWithValue("bio", (object?)profile.Biografia ?? DBNull.Value);
-            cmd.Parameters.AddWithValue("priv", profile.EsPrivado);
+            cmd.Parameters.AddWithValue("bio", (object?)profile.Biography ?? DBNull.Value);
+            cmd.Parameters.AddWithValue("priv", profile.IsPrivate);
             cmd.Parameters.AddWithValue("id", profile.Id);
             await cmd.ExecuteNonQueryAsync();
         }
@@ -67,10 +67,10 @@ namespace SmartLeaf.Infrastructure.Repositories
             Id             = r.GetGuid(0).ToString(),
             Email          = r.GetString(1),
             Username       = r.GetString(2),
-            NombreCompleto = r.IsDBNull(3) ? string.Empty : r.GetString(3),
+            FullName       = r.IsDBNull(3) ? string.Empty : r.GetString(3),
             AvatarUrl      = r.IsDBNull(4) ? null : r.GetString(4),
-            Biografia      = r.IsDBNull(5) ? null : r.GetString(5),
-            EsPrivado      = r.GetBoolean(6)
+            Biography      = r.IsDBNull(5) ? null : r.GetString(5),
+            IsPrivate      = r.GetBoolean(6)
         };
     }
 }

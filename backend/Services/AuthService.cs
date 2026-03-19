@@ -26,11 +26,17 @@ namespace SmartLeaf.Services
 
         public async Task<(bool Success, string Error)> RegisterAsync(RegisterRequest request)
         {
-            // Supabase Auth crea el usuario en auth.users
-            // Un trigger de Supabase crea automáticamente la fila en public.profile
-            var result = await _supabaseAuth.SignUpAsync(request.Email, request.Password);
+            // Supabase Auth crea el usuario en auth.users (pasamos user_meta_data)
+            var result = await _supabaseAuth.SignUpAsync(request.Email, request.Password, request.UserName, request.FullName);
             if (result == null)
                 return (false, "No se pudo crear el usuario en Supabase Auth.");
+
+            // Si el trigger no toma la metadata correctamente, forzamos un PATCH
+            if (!string.IsNullOrEmpty(result.AccessToken))
+            {
+                await Task.Delay(500); // Dar 500ms al trigger para crear la fila en profile
+                await _supabaseAuth.PatchProfileAsync(result.UserId, result.AccessToken, request.UserName, request.FullName);
+            }
 
             return (true, string.Empty);
         }

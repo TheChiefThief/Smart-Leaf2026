@@ -19,10 +19,10 @@ namespace SmartLeaf.Infrastructure.ExternalServices
                 ?? throw new InvalidOperationException("Supabase:AnonKey missing in configuration");
         }
 
-        public async Task<SupabaseSignUpResult?> SignUpAsync(string email, string password)
+        public async Task<SupabaseSignUpResult?> SignUpAsync(string email, string password, string username, string fullName)
         {
             var url = $"{_supabaseUrl}/auth/v1/signup";
-            var body = JsonSerializer.Serialize(new { email, password });
+            var body = JsonSerializer.Serialize(new { email, password, data = new { username, nombre_completo = fullName } });
             var request = new HttpRequestMessage(HttpMethod.Post, url)
             {
                 Content = new StringContent(body, Encoding.UTF8, "application/json")
@@ -42,6 +42,13 @@ namespace SmartLeaf.Infrastructure.ExternalServices
             using var doc = JsonDocument.Parse(json);
             var root = doc.RootElement;
 
+            // Buscar session para el AccessToken
+            string? accessToken = null;
+            if (root.TryGetProperty("session", out var sessionEl) && sessionEl.ValueKind == JsonValueKind.Object && sessionEl.TryGetProperty("access_token", out var tokenEl))
+            {
+                accessToken = tokenEl.GetString();
+            }
+
             // Caso 1: { "user": { "id": "...", "email": "..." }, "session": ... }
             if (root.TryGetProperty("user", out var userEl) &&
                 userEl.ValueKind == JsonValueKind.Object &&
@@ -50,7 +57,8 @@ namespace SmartLeaf.Infrastructure.ExternalServices
                 return new SupabaseSignUpResult
                 {
                     UserId = idFromUser.GetString() ?? string.Empty,
-                    Email  = userEl.TryGetProperty("email", out var emEl) ? emEl.GetString() ?? email : email
+                    Email  = userEl.TryGetProperty("email", out var emEl) ? emEl.GetString() ?? email : email,
+                    AccessToken = accessToken
                 };
             }
 
@@ -60,7 +68,8 @@ namespace SmartLeaf.Infrastructure.ExternalServices
                 return new SupabaseSignUpResult
                 {
                     UserId = idEl.GetString() ?? string.Empty,
-                    Email  = root.TryGetProperty("email", out var emEl2) ? emEl2.GetString() ?? email : email
+                    Email  = root.TryGetProperty("email", out var emEl2) ? emEl2.GetString() ?? email : email,
+                    AccessToken = accessToken
                 };
             }
 
@@ -96,6 +105,25 @@ namespace SmartLeaf.Infrastructure.ExternalServices
                 UserId = userEl.GetProperty("id").GetString() ?? string.Empty,
                 Email  = userEl.GetProperty("email").GetString() ?? string.Empty
             };
+        }
+        public async Task PatchProfileAsync(string userId, string accessToken, string username, string fullName)
+        {
+            var url = $"{_supabaseUrl}/rest/v1/profile?id=eq.{userId}";
+            var body = JsonSerializer.Serialize(new { username, nombre_completo = fullName });
+            var request = new HttpRequestMessage(HttpMethod.Patch, url)
+            {
+                Content = new StringContent(body, Encoding.UTF8, "application/json")
+            };
+            request.Headers.Add("apikey", _anonKey);
+            request.Headers.Add("Authorization", $"Bearer {accessToken}");
+            request.Headers.Add("Prefer", "return=minimal");
+
+            var response = await _httpClient.SendAsync(request);
+            if (!response.IsSuccessStatusCode)
+            {
+                var json = await response.Content.ReadAsStringAsync();
+                Console.WriteLine($"[Supabase Auth] PatchProfile error: {response.StatusCode} - {json}");
+            }
         }
     }
 }

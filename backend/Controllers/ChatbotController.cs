@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SmartLeaf.Application.DTOs;
 using SmartLeaf.Application.Interfaces;
@@ -6,25 +7,21 @@ namespace SmartLeaf.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class ChatbotController : ControllerBase
     {
         private readonly IChatbotService _chatbotService;
 
         public ChatbotController(IChatbotService chatbotService) => _chatbotService = chatbotService;
 
+        /// <summary>
+        /// Envía una pregunta al chatbot de jardinería (Gemini).
+        /// </summary>
         [HttpPost("ask")]
         public async Task<IActionResult> Ask([FromBody] ChatbotRequest request)
         {
-            try
-            {
-                var response = await _chatbotService.AskAsync(request);
-                return Ok(response);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error en ChatbotController: {ex.Message}");
-                return StatusCode(500, new { message = "Error al procesar la solicitud." });
-            }
+            var response = await _chatbotService.AskAsync(request);
+            return Ok(response);
         }
     }
 }
