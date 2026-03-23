@@ -24,12 +24,30 @@ namespace SmartLeaf.Controllers
         }
 
         [Authorize]
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var garden = await _gardenService.GetGardenByIdAsync(id);
+            if (garden == null) return NotFound(new { message = "Jardín no encontrado." });
+            return Ok(garden);
+        }
+
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateGardenRequest request)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier)!;
             var garden = await _gardenService.CreateGardenAsync(userId, request);
             return Ok(garden);
+        }
+
+        [Authorize]
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(int id, [FromBody] UpdateGardenRequest request)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier)!;
+            await _gardenService.UpdateGardenAsync(userId, id, request);
+            return NoContent();
         }
 
         [Authorize]

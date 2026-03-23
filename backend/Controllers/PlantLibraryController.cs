@@ -22,11 +22,28 @@ namespace SmartLeaf.Controllers
         }
 
         [Authorize]
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var plant = await _plantService.GetPlantByIdAsync(id);
+            if (plant == null) return NotFound(new { message = "Planta no encontrada." });
+            return Ok(plant);
+        }
+
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] CreatePlantRequest request)
         {
             var plant = await _plantService.AddPlantAsync(request);
             return Ok(plant);
+        }
+
+        [Authorize]
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(int id, [FromBody] UpdatePlantRequest request)
+        {
+            await _plantService.UpdatePlantAsync(id, request);
+            return NoContent();
         }
 
         [Authorize]

@@ -16,4 +16,11 @@ namespace SmartLeaf.Application.DTOs
         public DateTime ScheduledDate { get; set; }
         public string Status { get; set; } = string.Empty;
     }
+
+    public class UpdateCareTaskRequest
+    {
+        public string? TaskType { get; set; }
+        public DateTime? ScheduledDate { get; set; }
+        public string? Status { get; set; }
+    }
 }

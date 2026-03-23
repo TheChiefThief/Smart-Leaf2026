@@ -40,6 +40,8 @@ builder.Services.AddScoped<ICareTaskRepository, CareTaskRepository>();
 builder.Services.AddScoped<ISocialRepository, SocialRepository>();
 builder.Services.AddScoped<IProfileRepository, ProfileRepository>();
 builder.Services.AddScoped<ITopicRepository, TopicRepository>();
+builder.Services.AddScoped<ITerrainRepository, TerrainRepository>();
+builder.Services.AddScoped<ISproutRepository, SproutRepository>();
 
 // ─── Servicios de aplicación ─────────────────────────────────────────────────
 builder.Services.AddScoped<IAuthService, AuthService>();
@@ -48,6 +50,7 @@ builder.Services.AddScoped<IPlantService, PlantService>();
 builder.Services.AddScoped<ICareTaskService, CareTaskService>();
 builder.Services.AddScoped<ISocialService, SocialService>();
 builder.Services.AddScoped<IProfileService, ProfileService>();
+builder.Services.AddScoped<ITerrainService, TerrainService>();
 
 // ─── Servicios externos ───────────────────────────────────────────────────────
 builder.Services.AddHttpClient<ISupabaseAuthProvider, SupabaseAuthProvider>();

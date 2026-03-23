@@ -8,6 +8,7 @@ namespace SmartLeaf.Application.Interfaces
         Task<Plant?> GetByIdAsync(int id);
         Task<Plant> CreateAsync(Plant plant);
         Task UpdateStatusAsync(int id, string status);
+        Task UpdateAsync(Plant plant);
         Task DeleteAsync(int id);
     }
 }

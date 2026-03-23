@@ -7,6 +7,7 @@ namespace SmartLeaf.Application.Interfaces
         Task<IEnumerable<Garden>> GetByUserIdAsync(string userId);
         Task<Garden?> GetByIdAsync(int id);
         Task<Garden> CreateAsync(Garden garden);
+        Task UpdateAsync(Garden garden);
         Task DeleteAsync(int id);
     }
 }

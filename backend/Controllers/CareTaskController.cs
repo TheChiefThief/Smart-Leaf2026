@@ -23,11 +23,28 @@ namespace SmartLeaf.Controllers
         }
 
         [Authorize]
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var task = await _service.GetTaskByIdAsync(id);
+            if (task == null) return NotFound(new { message = "Tarea no encontrada." });
+            return Ok(task);
+        }
+
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateCareTaskRequest request)
         {
             var task = await _service.CreateAsync(request);
             return Ok(task);
+        }
+
+        [Authorize]
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(int id, [FromBody] UpdateCareTaskRequest request)
+        {
+            await _service.UpdateTaskAsync(id, request);
+            return NoContent();
         }
 
         [Authorize]

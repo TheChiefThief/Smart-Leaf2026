@@ -28,6 +28,18 @@ namespace SmartLeaf.Infrastructure.Repositories
             return tasks;
         }
 
+        public async Task<CareTask?> GetByIdAsync(int id)
+        {
+            await using var conn = new NpgsqlConnection(_connectionString);
+            await conn.OpenAsync();
+            await using var cmd = new NpgsqlCommand(
+                "SELECT id, plant_id, task_type, scheduled_date, status FROM care_tasks WHERE id = @id",
+                conn);
+            cmd.Parameters.AddWithValue("id", id);
+            await using var reader = await cmd.ExecuteReaderAsync();
+            return await reader.ReadAsync() ? MapTask(reader) : null;
+        }
+
         public async Task<CareTask> CreateAsync(CareTask task)
         {
             await using var conn = new NpgsqlConnection(_connectionString);
@@ -51,6 +63,19 @@ namespace SmartLeaf.Infrastructure.Repositories
                 "UPDATE care_tasks SET status = @status WHERE id = @id", conn);
             cmd.Parameters.AddWithValue("status", status);
             cmd.Parameters.AddWithValue("id", id);
+            await cmd.ExecuteNonQueryAsync();
+        }
+
+        public async Task UpdateAsync(CareTask task)
+        {
+            await using var conn = new NpgsqlConnection(_connectionString);
+            await conn.OpenAsync();
+            await using var cmd = new NpgsqlCommand(
+                "UPDATE care_tasks SET task_type = @type, scheduled_date = @date, status = @status WHERE id = @id", conn);
+            cmd.Parameters.AddWithValue("type", task.TaskType);
+            cmd.Parameters.AddWithValue("date", task.ScheduledDate);
+            cmd.Parameters.AddWithValue("status", task.Status);
+            cmd.Parameters.AddWithValue("id", task.Id);
             await cmd.ExecuteNonQueryAsync();
         }
 

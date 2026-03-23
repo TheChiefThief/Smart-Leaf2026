@@ -23,4 +23,11 @@ namespace SmartLeaf.Application.DTOs
         public DateTime? EndDate { get; set; }
         public string Notes { get; set; } = string.Empty;
     }
+
+    public class UpdatePlantRequest
+    {
+        public string? Nickname { get; set; }
+        public int? InitialQuantity { get; set; }
+        public string? Notes { get; set; }
+    }
 }

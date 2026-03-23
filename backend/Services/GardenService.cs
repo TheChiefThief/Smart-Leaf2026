@@ -45,5 +45,32 @@ namespace SmartLeaf.Services
         }
 
         public async Task DeleteGardenAsync(int id) => await _repo.DeleteAsync(id);
+
+        public async Task<GardenResponse?> GetGardenByIdAsync(int id)
+        {
+            var g = await _repo.GetByIdAsync(id);
+            if (g == null) return null;
+            return new GardenResponse
+            {
+                Id = g.Id,
+                Name = g.Name,
+                ClimateZoneId = g.ClimateZoneId,
+                SoilTypeId = g.SoilTypeId,
+                SunExposure = g.SunExposure
+            };
+        }
+
+        public async Task UpdateGardenAsync(string userId, int id, UpdateGardenRequest request)
+        {
+            var garden = await _repo.GetByIdAsync(id);
+            if (garden == null || garden.UserId != userId) return;
+
+            if (request.Name != null) garden.Name = request.Name;
+            if (request.ClimateZoneId.HasValue) garden.ClimateZoneId = request.ClimateZoneId.Value;
+            if (request.SoilTypeId.HasValue) garden.SoilTypeId = request.SoilTypeId.Value;
+            if (request.SunExposure != null) garden.SunExposure = request.SunExposure;
+
+            await _repo.UpdateAsync(garden);
+        }
     }
 }

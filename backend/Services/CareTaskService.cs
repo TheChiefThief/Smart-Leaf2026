@@ -43,8 +43,34 @@ namespace SmartLeaf.Services
             };
         }
 
+        public async Task<CareTaskResponse?> GetTaskByIdAsync(int id)
+        {
+            var t = await _repo.GetByIdAsync(id);
+            if (t == null) return null;
+            return new CareTaskResponse
+            {
+                Id = t.Id,
+                PlantId = t.PlantId,
+                TaskType = t.TaskType,
+                ScheduledDate = t.ScheduledDate,
+                Status = t.Status
+            };
+        }
+
         public async Task UpdateStatusAsync(int id, string status) =>
             await _repo.UpdateStatusAsync(id, status);
+
+        public async Task UpdateTaskAsync(int id, UpdateCareTaskRequest request)
+        {
+            var task = await _repo.GetByIdAsync(id);
+            if (task == null) return;
+
+            if (request.TaskType != null) task.TaskType = request.TaskType;
+            if (request.ScheduledDate.HasValue) task.ScheduledDate = request.ScheduledDate.Value;
+            if (request.Status != null) task.Status = request.Status;
+
+            await _repo.UpdateAsync(task);
+        }
 
         public async Task DeleteAsync(int id) => await _repo.DeleteAsync(id);
     }

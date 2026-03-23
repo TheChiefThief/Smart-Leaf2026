@@ -66,6 +66,22 @@ namespace SmartLeaf.Infrastructure.Repositories
             await cmd.ExecuteNonQueryAsync();
         }
 
+        public async Task UpdateAsync(Garden garden)
+        {
+            await using var conn = new NpgsqlConnection(_connectionString);
+            await conn.OpenAsync();
+            await using var cmd = new NpgsqlCommand(
+                @"UPDATE gardens
+                  SET name = @name, zone_id = @zone, soil_type_id = @soil, sun_exposure = @sun
+                  WHERE id = @id", conn);
+            cmd.Parameters.AddWithValue("name", garden.Name);
+            cmd.Parameters.AddWithValue("zone", garden.ClimateZoneId == 0 ? (object)DBNull.Value : (object)garden.ClimateZoneId);
+            cmd.Parameters.AddWithValue("soil", garden.SoilTypeId == 0 ? (object)DBNull.Value : (object)garden.SoilTypeId);
+            cmd.Parameters.AddWithValue("sun", garden.SunExposure ?? (object)DBNull.Value);
+            cmd.Parameters.AddWithValue("id", garden.Id);
+            await cmd.ExecuteNonQueryAsync();
+        }
+
         private static Garden MapGarden(NpgsqlDataReader r) => new()
         {
             Id            = (int)r.GetInt64(0),

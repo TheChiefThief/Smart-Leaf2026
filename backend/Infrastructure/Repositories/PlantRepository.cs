@@ -70,6 +70,19 @@ namespace SmartLeaf.Infrastructure.Repositories
             await cmd.ExecuteNonQueryAsync();
         }
 
+        public async Task UpdateAsync(Plant plant)
+        {
+            await using var conn = new NpgsqlConnection(_connectionString);
+            await conn.OpenAsync();
+            await using var cmd = new NpgsqlCommand(
+                "UPDATE plants SET nickname = @nick, initial_quantity = @qty, notes = @notes WHERE id = @id", conn);
+            cmd.Parameters.AddWithValue("nick", plant.Nickname);
+            cmd.Parameters.AddWithValue("qty", plant.InitialQuantity);
+            cmd.Parameters.AddWithValue("notes", plant.Notes);
+            cmd.Parameters.AddWithValue("id", plant.Id);
+            await cmd.ExecuteNonQueryAsync();
+        }
+
         public async Task DeleteAsync(int id)
         {
             await using var conn = new NpgsqlConnection(_connectionString);

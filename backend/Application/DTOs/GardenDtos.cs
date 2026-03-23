@@ -16,4 +16,12 @@ namespace SmartLeaf.Application.DTOs
         public int SoilTypeId { get; set; }
         public string SunExposure { get; set; } = string.Empty;
     }
+
+    public class UpdateGardenRequest
+    {
+        public string? Name { get; set; }
+        public int? ClimateZoneId { get; set; }
+        public int? SoilTypeId { get; set; }
+        public string? SunExposure { get; set; }
+    }
 }
